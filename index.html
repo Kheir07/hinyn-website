@@ -164,6 +164,38 @@
   .v-close:hover{background:rgba(255,255,255,0.25);}
   @media (max-width:900px){ .v-frame{width:min(92vw, 151vh);} .v-close{top:-42px;} }
 
+  /* PHOTO GALLERY */
+  .p-media-photo{padding:0; position:relative;}
+  .g-facade{position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; cursor:pointer; background:transparent center/cover no-repeat; display:flex; align-items:flex-end; justify-content:flex-start;}
+  .g-facade::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,0.18); transition:background 0.25s ease;}
+  .g-facade:hover::after, .g-facade:focus-visible::after{background:rgba(0,0,0,0.02);}
+  .g-badge{position:relative; z-index:1; margin:12px; padding:6px 12px; border-radius:100px; background:rgba(23,25,22,0.72); color:#fff; font-size:11.5px; font-weight:700; letter-spacing:0.2px;}
+  .p-photos{margin-top:10px; padding:6px 14px; border:1px solid var(--line); border-radius:100px; background:none; color:var(--ink-soft); font-size:11.5px; font-weight:700; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;}
+  .p-photos:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .g-lightbox{position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(23,25,22,0.82); opacity:0; transition:opacity 0.25s ease;}
+  .g-lightbox.open{opacity:1;}
+  .g-panel{width:min(1080px, 94vw); max-height:86vh; display:flex; flex-direction:column; background:#fff; border-radius:18px; padding:22px 24px 24px; box-shadow:0 30px 80px rgba(0,0,0,0.4);}
+  .g-head{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px;}
+  .g-head h3{font-size:18px; font-weight:700; color:var(--ink);}
+  .g-head span{display:block; font-size:11.5px; color:var(--ink-soft); font-weight:500; margin-top:2px;}
+  .g-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:10px; overflow-y:auto;}
+  .g-grid button{padding:0; border:0; background:none; cursor:pointer; border-radius:10px; overflow:hidden; line-height:0;}
+  .g-grid img{width:100%; height:130px; object-fit:cover; display:block; transition:transform 0.3s ease;}
+  .g-grid button:hover img{transform:scale(1.06);}
+  .g-viewer{position:fixed; inset:0; z-index:210; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.94); opacity:0; transition:opacity 0.2s ease;}
+  .g-viewer.open{opacity:1;}
+  .g-viewer img{max-width:88vw; max-height:86vh; object-fit:contain; display:block;}
+  .g-nav{position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,0.14); color:#fff; font-size:22px; cursor:pointer; transition:background 0.2s ease;}
+  .g-nav:hover{background:rgba(255,255,255,0.3);}
+  .g-prev{left:18px;}
+  .g-next{right:18px;}
+  .g-count{position:absolute; bottom:20px; left:0; right:0; text-align:center; color:rgba(255,255,255,0.7); font-size:12.5px;}
+  .g-x{position:absolute; top:18px; right:18px; width:38px; height:38px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,0.14); color:#fff; font-size:22px; cursor:pointer;}
+  .g-x:hover{background:rgba(255,255,255,0.3);}
+  .g-close{width:34px; height:34px; flex-shrink:0; padding:0; border:0; border-radius:50%; background:rgba(23,25,22,0.06); color:var(--ink); font-size:20px; cursor:pointer;}
+  .g-close:hover{background:var(--line);}
+  @media (max-width:560px){ .g-grid{grid-template-columns:repeat(auto-fill, minmax(110px, 1fr));} .g-grid img{height:100px;} .g-nav{width:40px; height:40px;} }
+
   /* CONTACT BAND */
   .contact-band{padding:110px 0; background:linear-gradient(120deg, var(--teal) 0%, var(--teal-deep) 100%); position:relative; overflow:hidden;}
   .contact-band h2{font-weight:700; color:#fff; font-size:clamp(32px,4.4vw,54px); letter-spacing:-1px; max-width:640px;}
@@ -335,31 +367,36 @@
     </div>
     <div class="p-grid">
       <div class="p-card show" data-cat="campaigns"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1019795977" data-vimeo-hash="0dcb2f4557" aria-label="Play Hermès video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Campaigns &amp; Commercials</span><strong>Hermès</strong></div></div>
-      <div class="p-card show" data-cat="campaigns"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="813198923" aria-label="Play Girard-Perregaux video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Campaigns &amp; Commercials</span><strong>Girard-Perregaux</strong></div></div>
+      <div class="p-card show" data-cat="campaigns" data-gallery="campaigns-and-commercials/girard-perregaux"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="813198923" aria-label="Play Girard-Perregaux video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Campaigns &amp; Commercials</span><strong>Girard-Perregaux</strong></div></div>
       <div class="p-card show" data-cat="campaigns"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="334693145" aria-label="Play Bonanza video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Campaigns &amp; Commercials</span><strong>Bonanza</strong></div></div>
 
       <div class="p-card show" data-cat="boutiques"><div class="p-media g2 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224580676" aria-label="Play Dries Van Noten video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Dries Van Noten</strong></div></div>
-      <div class="p-card show" data-cat="boutiques"><div class="p-media g2 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224584550" aria-label="Play Byredo video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Byredo</strong></div></div>
-      <div class="p-card show" data-cat="boutiques"><div class="p-media g2">Selection</div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Carolina Herrera</strong></div></div>
+      <div class="p-card show" data-cat="boutiques" data-gallery="popup-and-boutiques/byredo"><div class="p-media g2 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224584550" aria-label="Play Byredo video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Byredo</strong></div></div>
+      <div class="p-card show" data-cat="boutiques" data-gallery="popup-and-boutiques/carolina-herrera"><div class="p-media g2 p-media-photo"><button class="g-facade" type="button" aria-label="Open Carolina Herrera gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Carolina Herrera</strong></div></div>
       <div class="p-card show" data-cat="boutiques"><div class="p-media g2 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224586242" aria-label="Play Bulgari video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Bulgari</strong></div></div>
+      <div class="p-card show" data-cat="boutiques" data-gallery="popup-and-boutiques/chanel"><div class="p-media g2 p-media-photo"><button class="g-facade" type="button" aria-label="Open Chanel gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Chanel</strong></div></div>
+      <div class="p-card show" data-cat="boutiques" data-gallery="popup-and-boutiques/chopard"><div class="p-media g2 p-media-photo"><button class="g-facade" type="button" aria-label="Open Chopard gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Chopard</strong></div></div>
+      <div class="p-card show" data-cat="boutiques" data-gallery="popup-and-boutiques/rolex"><div class="p-media g2 p-media-photo"><button class="g-facade" type="button" aria-label="Open Rolex gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Boutiques &amp; Pop-up</span><strong>Rolex</strong></div></div>
 
-      <div class="p-card show" data-cat="fashion"><div class="p-media g3">Photos</div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>LPM</strong></div></div>
-      <div class="p-card show" data-cat="fashion"><div class="p-media g3">Photos</div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>Messika</strong></div></div>
+      <div class="p-card show" data-cat="fashion" data-gallery="campaigns-and-commercials/lpm"><div class="p-media g3 p-media-photo"><button class="g-facade" type="button" aria-label="Open LPM gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>LPM</strong></div></div>
+      <div class="p-card show" data-cat="fashion" data-gallery="fashion-editorial/messika"><div class="p-media g3 p-media-photo"><button class="g-facade" type="button" aria-label="Open Messika gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>Messika</strong></div></div>
       <div class="p-card show" data-cat="fashion"><div class="p-media g3 p-media-video"><button class="v-facade" type="button" data-vimeo-id="399197975" aria-label="Play The Discovery video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>The Discovery</strong></div></div>
-      <div class="p-card show" data-cat="fashion"><div class="p-media g3 p-media-video"><button class="v-facade" type="button" data-vimeo-id="396662188" aria-label="Play 6th Street video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>6th Street</strong></div></div>
+      <div class="p-card show" data-cat="fashion" data-gallery="fashion-editorial/6th-street"><div class="p-media g3 p-media-video"><button class="v-facade" type="button" data-vimeo-id="396662188" aria-label="Play 6th Street video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>6th Street</strong></div></div>
+      <div class="p-card show" data-cat="fashion" data-gallery="fashion-editorial/boutique-lavande"><div class="p-media g3 p-media-photo"><button class="g-facade" type="button" aria-label="Open Boutique Lavande gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Fashion &amp; Editorial</span><strong>Boutique Lavande</strong></div></div>
 
       <div class="p-card show" data-cat="events"><div class="p-media g4 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224601302" aria-label="Play Grey Goose video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>Grey Goose</strong></div></div>
-      <div class="p-card show" data-cat="events"><div class="p-media g4 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224601520" aria-label="Play Chopard Dubai Watch Week video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>Chopard DWW</strong></div></div>
+      <div class="p-card show" data-cat="events" data-gallery="events-and-experiences/chopard-dww"><div class="p-media g4 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224601520" aria-label="Play Chopard Dubai Watch Week video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>Chopard DWW</strong></div></div>
       <div class="p-card show" data-cat="events"><div class="p-media g4 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224601797" aria-label="Play L'Artisan Parfumeur video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>L'Artisan Parfumeur</strong></div></div>
-      <div class="p-card show" data-cat="events"><div class="p-media g4">Coverage</div><div class="p-info"><span>Events &amp; Experiences</span><strong>Van Cleef &amp; Arpels</strong></div></div>
+      <div class="p-card show" data-cat="events" data-gallery="events-and-experiences/van-cleef-and-arpels"><div class="p-media g4 p-media-photo"><button class="g-facade" type="button" aria-label="Open Van Cleef &amp; Arpels gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>Van Cleef &amp; Arpels</strong></div></div>
       <div class="p-card show" data-cat="events"><div class="p-media g4 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224601960" aria-label="Play Un Chic Nonna video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Events &amp; Experiences</span><strong>Un Chic Nonna</strong></div></div>
 
-      <div class="p-card show" data-cat="food"><div class="p-media g5 p-media-video"><button class="v-facade" type="button" data-vimeo-id="339390192" aria-label="Play Play Restaurant video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Food &amp; Restaurants</span><strong>Play Restaurant</strong></div></div>
+      <div class="p-card show" data-cat="food" data-gallery="food-and-restaurant/play-restaurant"><div class="p-media g5 p-media-video"><button class="v-facade" type="button" data-vimeo-id="339390192" aria-label="Play Play Restaurant video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Food &amp; Restaurants</span><strong>Play Restaurant</strong></div></div>
       <div class="p-card show" data-cat="food"><div class="p-media g5 p-media-video"><button class="v-facade" type="button" data-vimeo-id="339393305" aria-label="Play Deyan video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Food &amp; Restaurants</span><strong>Deyan</strong></div></div>
+      <div class="p-card show" data-cat="food" data-gallery="food-and-restaurant/greek-restaurant"><div class="p-media g5 p-media-photo"><button class="g-facade" type="button" aria-label="Open Greek Restaurant gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Food &amp; Restaurants</span><strong>Greek Restaurant</strong></div></div>
 
       <div class="p-card show" data-cat="lifestyle"><div class="p-media g2 p-media-video"><button class="v-facade" type="button" data-vimeo-id="1224605609" aria-label="Play Chado Spa video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Lifestyle, Beauty &amp; Hospitality</span><strong>Chado</strong></div></div>
-      <div class="p-card show" data-cat="lifestyle"><div class="p-media g2">Photos</div><div class="p-info"><span>Lifestyle, Beauty &amp; Hospitality</span><strong>Izil</strong></div></div>
-      <div class="p-card show" data-cat="lifestyle"><div class="p-media g2">Coverage</div><div class="p-info"><span>Lifestyle, Beauty &amp; Hospitality</span><strong>Deyan</strong></div></div>
+      <div class="p-card show" data-cat="lifestyle" data-gallery="lifestyle-beauty-hospitality/izil"><div class="p-media g2 p-media-photo"><button class="g-facade" type="button" aria-label="Open Izil gallery"><span class="g-badge"></span></button></div><div class="p-info"><span>Lifestyle, Beauty &amp; Hospitality</span><strong>Izil</strong></div></div>
+      <!--<div class="p-card show" data-cat="lifestyle"><div class="p-media g2">Coverage</div><div class="p-info"><span>Lifestyle, Beauty &amp; Hospitality</span><strong>Deyan</strong></div></div>-->
 
       <div class="p-card show" data-cat="corporate"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="334690412" aria-label="Play Bonanza video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Corporate, Trainings &amp; Interviews</span><strong>Bonanza</strong></div></div>
       <div class="p-card show" data-cat="corporate"><div class="p-media g1 p-media-video"><button class="v-facade" type="button" data-vimeo-id="334689963" aria-label="Play Bonanza video"><span class="v-play" aria-hidden="true"></span></button></div><div class="p-info"><span>Corporate, Trainings &amp; Interviews</span><strong>Bonanza</strong></div></div>
@@ -478,6 +515,7 @@
   </div>
 </footer>
 
+<script src="assets/gallery.js"></script>
 <script>
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
@@ -596,6 +634,147 @@
     facade.addEventListener('click', () => {
       openLightbox(id, hash, facade.getAttribute('aria-label') || 'vimeo-player');
     });
+  });
+
+  // Photo galleries: card -> grid of thumbnails -> full-size viewer
+  const galleries = window.GALLERY || {};
+  let gridBox = null;
+  let viewer = null;
+
+  function closeViewer(){
+    if(!viewer) return;
+    viewer.remove();
+    viewer = null;
+  }
+
+  function closeGrid(){
+    closeViewer();
+    if(!gridBox) return;
+    gridBox.remove();
+    gridBox = null;
+    document.body.style.overflow = '';
+  }
+
+  function openViewer(photos, start){
+    closeViewer();
+    let index = start;
+
+    const img = document.createElement('img');
+    const counter = document.createElement('div');
+    counter.className = 'g-count';
+
+    const show = step => {
+      index = (index + step + photos.length) % photos.length;
+      img.src = photos[index].f;
+      img.alt = `Photo ${index + 1} of ${photos.length}`;
+      counter.textContent = `${index + 1} / ${photos.length}`;
+    };
+
+    const button = (cls, label, html, onClick) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = cls;
+      el.setAttribute('aria-label', label);
+      el.innerHTML = html;
+      el.addEventListener('click', e => { e.stopPropagation(); onClick(); });
+      return el;
+    };
+
+    viewer = document.createElement('div');
+    viewer.className = 'g-viewer';
+    viewer.append(
+      img,
+      button('g-nav g-prev', 'Previous photo', '&#8249;', () => show(-1)),
+      button('g-nav g-next', 'Next photo', '&#8250;', () => show(1)),
+      button('g-x', 'Close photo', '&times;', closeViewer),
+      counter,
+    );
+    viewer.addEventListener('click', e => { if(e.target === viewer){ closeViewer(); } });
+
+    show(0);
+    document.body.append(viewer);
+    requestAnimationFrame(() => viewer.classList.add('open'));
+    viewer.querySelector('.g-next').focus();
+  }
+
+  function openGrid(key, section, name){
+    const photos = galleries[key];
+    if(!photos || !photos.length) return;
+    closeGrid();
+
+    const grid = document.createElement('div');
+    grid.className = 'g-grid';
+    photos.forEach((photo, i) => {
+      const thumb = document.createElement('img');
+      thumb.src = photo.t;
+      thumb.alt = `${name} photo ${i + 1}`;
+      thumb.loading = 'lazy';
+      const cell = document.createElement('button');
+      cell.type = 'button';
+      cell.append(thumb);
+      cell.addEventListener('click', () => openViewer(photos, i));
+      grid.append(cell);
+    });
+
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'g-close';
+    close.setAttribute('aria-label', 'Close gallery');
+    close.innerHTML = '&times;';
+    close.addEventListener('click', closeGrid);
+
+    const head = document.createElement('div');
+    head.className = 'g-head';
+    head.innerHTML = `<div><h3></h3><span></span></div>`;
+    head.querySelector('h3').textContent = name;
+    head.querySelector('span').textContent = `${section} — ${photos.length} photos`;
+    head.append(close);
+
+    const panel = document.createElement('div');
+    panel.className = 'g-panel';
+    panel.append(head, grid);
+
+    gridBox = document.createElement('div');
+    gridBox.className = 'g-lightbox';
+    gridBox.append(panel);
+    gridBox.addEventListener('click', e => { if(e.target === gridBox){ closeGrid(); } });
+
+    document.body.append(gridBox);
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => gridBox.classList.add('open'));
+    close.focus();
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ if(viewer){ closeViewer(); } else { closeGrid(); } }
+    if(!viewer) return;
+    if(e.key === 'ArrowRight'){ viewer.querySelector('.g-next').click(); }
+    if(e.key === 'ArrowLeft'){ viewer.querySelector('.g-prev').click(); }
+  });
+
+  document.querySelectorAll('.p-card[data-gallery]').forEach(card => {
+    const key = card.getAttribute('data-gallery');
+    const photos = galleries[key];
+    const info = card.querySelector('.p-info');
+    const name = info.querySelector('strong').textContent;
+    const section = info.querySelector('span').textContent;
+    if(!photos || !photos.length) return;
+
+    const facade = card.querySelector('.g-facade');
+    if(facade){
+      facade.style.backgroundImage = `url("${photos[0].t}")`;
+      facade.querySelector('.g-badge').textContent = `${photos.length} photos`;
+      facade.addEventListener('click', () => openGrid(key, section, name));
+      return;
+    }
+
+    // Card already shows a video: offer the photos as a second action.
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'p-photos';
+    button.textContent = `View ${photos.length} photos`;
+    button.addEventListener('click', () => openGrid(key, section, name));
+    info.append(button);
   });
 </script>
 </body>
